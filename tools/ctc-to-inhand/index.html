@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CTC to In-Hand Salary Calculator India (FY 2026-27, New Regime)</title>
+<meta name="description" content="Estimate your monthly in-hand salary from your annual CTC in India. Includes PF, gratuity, professional tax and income tax under the FY 2026-27 new regime. Free, private.">
+<link rel="canonical" href="https://gitttannesha.github.io/micro-tools/tools/ctc-to-inhand/">
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+main.c{--fg:#14202b;--mut:#5b6b78;--bd:#dbe4e8;--card:#f3f7f8;--ac:#0f766e;max-width:640px;margin:0 auto;padding:2rem 1rem 3rem;color:var(--fg)}
+@media(prefers-color-scheme:dark){main.c{--fg:#e5edf1;--mut:#92a4af;--bd:#283740;--card:#162027;--ac:#34d3c1}}
+main.c h1{font-size:clamp(1.6rem,5vw,2.2rem);line-height:1.15;margin:0 0 .4rem}
+.c .lead{color:var(--mut);margin:0 0 1.5rem}
+.c-card{background:linear-gradient(135deg,#0f766e,#14b8a6);color:#fff;border-radius:18px;padding:1.4rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;box-shadow:0 8px 24px rgba(15,118,110,.25)}
+.c-card .full{grid-column:1/-1}
+main.c .c-card label{display:block;font-size:.88rem;font-weight:600;color:#fff!important}
+.c-card input,.c-card select{color-scheme:dark;width:100%;margin-top:.3rem;padding:.6rem .7rem;font:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.45);border-radius:10px}
+.c-card select option{color:#000}
+.c-card input:focus-visible,.c-card select:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.c-card .chk{display:flex;gap:.5rem;align-items:center}.c-card .chk input{width:auto;margin:0}
+.c-res{margin-top:1.2rem;border:1px solid var(--bd);background:var(--card);border-radius:18px;padding:1.2rem}
+.c-big{font-size:clamp(2rem,8vw,2.8rem);font-weight:800;color:var(--ac);line-height:1.1;font-variant-numeric:tabular-nums}
+.c-res table{width:100%;border-collapse:collapse;margin-top:.8rem;font-variant-numeric:tabular-nums}
+.c-res td{padding:.45rem 0;border-bottom:1px solid var(--bd)}.c-res td:last-child{text-align:right}
+.c-res tr.tot td{font-weight:700;border-bottom:0}
+.c-note{color:var(--mut);font-size:.85rem;margin-top:.8rem}
+.c h3.h{font-size:1.05rem;margin:2rem 0 .6rem}
+.c details{border-bottom:1px solid var(--bd);padding:.6rem 0}.c summary{cursor:pointer;font-weight:600}
+@media(max-width:520px){.c-card{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="c">
+<h1>CTC to In-Hand Salary Calculator</h1>
+<p class="lead">Enter your annual CTC and see roughly what lands in your bank account each month. India, FY 2026-27, new tax regime.</p>
+
+<div class="c-card" role="group" aria-label="Salary details">
+<label class="full">Annual CTC (₹)<input id="ctc" type="number" min="0" step="1000" inputmode="numeric" placeholder="e.g. 1200000"></label>
+<label>Variable / bonus per year (₹)<input id="var" type="number" min="0" step="1000" value="0" inputmode="numeric"></label>
+<label>Basic pay (% of fixed pay)<input id="basic" type="number" min="10" max="100" value="50"></label>
+<label>PF is calculated on<select id="pfmode"><option value="cap">Basic capped at ₹15,000/month</option><option value="full">Full basic</option></select></label>
+<label>Professional tax (₹/month)<input id="pt" type="number" min="0" max="300" value="200"></label>
+<label>Other deductions (₹/month)<input id="oth" type="number" min="0" value="0"></label>
+<label class="chk"><input id="grat" type="checkbox" checked>Gratuity is part of my CTC</label>
+</div>
+
+<section class="c-res" aria-live="polite">
+<div class="c-note" style="margin:0">Estimated monthly in-hand</div>
+<div class="c-big" id="big">₹0</div>
+<table id="rows"></table>
+<p class="c-note" id="warn"></p>
+</section>
+
+<p class="c-note">This is an estimate, not tax advice. Your employer's salary structure, TDS method and state professional tax can differ. Uses the new tax regime slabs, ₹75,000 standard deduction and the ₹12 lakh rebate for FY 2026-27, with 4% cess. Surcharge (incomes above ₹50 lakh), the old regime and other benefits are not included.</p>
+
+<!-- AD SLOT: place ad code here later -->
+
+<h3 class="h">How it works</h3>
+<ol>
+<li>Your annual CTC is split into fixed pay and variable pay.</li>
+<li>Employer PF and gratuity are removed, because they are part of CTC but not paid monthly.</li>
+<li>Your own PF, professional tax and income tax are deducted. What is left is your in-hand pay.</li>
+</ol>
+
+<h3 class="h">FAQ</h3>
+<details><summary>Why is my real salary slip different?</summary><p>Companies structure pay differently (basic %, allowances, PF rules, insurance, TDS timing). Change the inputs above to match your offer letter for a closer estimate.</p></details>
+<details><summary>Is my data sent anywhere?</summary><p>No. Everything is calculated in your browser, and nothing is saved or uploaded.</p></details>
+<details><summary>Is variable pay included in the monthly figure?</summary><p>No. It is shown separately as an annual amount after the extra tax it causes.</p></details>
+<p class="c-note"><a href="../../index.html">&larr; All tools</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../privacy.html">Privacy</a> &middot; <a href="../../contact.html">Contact</a> &middot; &copy; <span data-year></span> Micro Tools</p>
+</main>
+<script src="../../assets/common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

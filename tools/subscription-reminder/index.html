@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Free Trial Reminder | Never Pay for a Forgotten Trial</title>
+<meta name="description" content="Add a free trial, pick how many days before it ends to be reminded, and get funky reminders plus calendar alarms. Free, private, no sign-up.">
+<link rel="canonical" href="https://gitttannesha.github.io/micro-tools/tools/subscription-reminder/">
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+.rm{--fg:#14202b;--mut:#5b6b78;--bd:#dbe4e8;--card:#f3f7f8;--red:#c81e1e;--amb:#a15c07;--ac:#0f766e;max-width:640px;margin:0 auto;padding:2rem 1rem 3rem;color:var(--fg)}
+@media(prefers-color-scheme:dark){.rm{--fg:#e5edf1;--mut:#92a4af;--bd:#283740;--card:#162027;--red:#ff8080;--amb:#f5b94a;--ac:#34d3c1}}
+.rm h1{font-size:clamp(1.6rem,5vw,2.2rem);line-height:1.15;margin:0 0 .4rem}
+.rm .lead{color:var(--mut);margin:0 0 1.5rem}
+.rm-card{background:linear-gradient(135deg,#0f766e,#14b8a6);color:#fff;border-radius:18px;padding:1.4rem;display:grid;gap:1rem;box-shadow:0 8px 24px rgba(15,118,110,.25)}
+.rm-card h2{margin:0;font-size:1.2rem;color:#fff}
+.rm-card label{display:block;font-size:.9rem;font-weight:600;color:#FFFFFF}
+.rm-card input{color-scheme:dark;width:100%;margin-top:.3rem;padding:.65rem .75rem;font:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.45);border-radius:10px}
+.rm-card input::placeholder{color:rgba(255,255,255,.7)}
+.rm-card input:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.rm-go{font:inherit;font-weight:700;cursor:pointer;padding:.65rem 1.2rem;border:0;border-radius:10px;background:#fff;color:#0f766e}
+.rm-ghost{font:inherit;cursor:pointer;padding:.65rem 1rem;border-radius:10px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.6)}
+.rm-row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.rm h3.rm-h{font-size:1.05rem;margin:2rem 0 .6rem}
+.rm-alert{display:grid;grid-template-columns:3rem 1fr;gap:.8rem;padding:1rem;margin-top:1rem;border-radius:14px;border:2px solid var(--ac);background:var(--card)}
+.rm-alert .em{font-size:2.4rem;line-height:1}
+.rm-alert h4{margin:0;font-size:1.05rem}.rm-alert p{margin:.2rem 0 .7rem;color:var(--mut)}
+.rm-alert.s2{border-color:var(--amb)}.rm-alert.s3,.rm-alert.s4{border-color:var(--red)}
+.rm-alert img{max-width:100%;max-height:170px;border-radius:8px;display:block;margin:.4rem 0}
+.rm-rain{font-size:1.5rem;letter-spacing:.3rem;white-space:nowrap;overflow:hidden;margin-bottom:.6rem}
+.rm-btn{font:inherit;font-size:.85rem;cursor:pointer;padding:.3rem .7rem;border-radius:8px;border:1px solid var(--bd);background:transparent;color:var(--fg)}
+.rm-btn.del{color:var(--red)}
+.rm-list{display:grid;gap:.6rem}
+.rm-item{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;padding:.8rem 1rem;border:1px solid var(--bd);border-left:5px solid var(--ac);border-radius:12px;background:var(--card)}
+.rm-item.hot{border-left-color:var(--red)}.rm-item.off{opacity:.6;border-left-color:var(--bd)}
+.rm-meta{color:var(--mut);font-size:.88rem}
+.rm-empty{color:var(--mut);text-align:center;padding:1.2rem 0}
+.rm details{border-bottom:1px solid var(--bd);padding:.6rem 0}.rm summary{cursor:pointer;font-weight:600}
+.rm-small{margin-top:1.2rem;color:var(--mut);font-size:.85rem}
+.rm-small button{font:inherit;font-size:.85rem;background:none;border:0;color:var(--ac);text-decoration:underline;cursor:pointer;padding:0 .3rem}
+@media(prefers-reduced-motion:no-preference){.rm-alert .em{display:inline-block;animation:bob 1.4s ease-in-out infinite}.s3 .em{animation-name:shake}.rm-rain{animation:slide 6s linear infinite}
+@keyframes bob{50%{transform:translateY(-6px)}}@keyframes shake{25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}@keyframes slide{from{transform:translateX(-30%)}to{transform:translateX(0)}}}
+</style>
+</head>
+<body>
+<main class="rm">
+<h1>Free Trial Reminder</h1>
+<p class="lead">Add a trial, and get nudged before it charges you. Saved only in this browser.</p>
+
+<div id="alerts" role="status" aria-live="polite"></div>
+
+<form id="f" class="rm-card" style="margin-top:1rem">
+<h2 id="formTitle">What should I remind you about?</h2>
+<label>Service name<input id="name" required maxlength="60" placeholder="e.g. Netflix"></label>
+<label>Trial end date<input id="date" type="date" required></label>
+<label>Remind me this many days before<input id="remind" type="number" min="0" max="30" value="3" required></label>
+<div class="rm-row"><button class="rm-go" type="submit" id="saveBtn">Remind me</button><button type="button" class="rm-ghost" id="cancelEdit" hidden>Cancel edit</button></div>
+</form>
+<p class="rm-small" id="saved" role="status" hidden></p>
+
+<h3 class="rm-h">Your reminders</h3>
+<div class="rm-list" id="list"></div>
+
+<p class="rm-small">Backup: <button type="button" id="export">Export</button> or <label style="cursor:pointer;text-decoration:underline;color:var(--ac)">Import<input id="import" type="file" accept="application/json" hidden></label></p>
+
+<!-- AD SLOT: place ad code here later -->
+
+<h3 class="rm-h">How to use</h3>
+<ol>
+<li>Type the service name and the date its free trial ends.</li>
+<li>Choose how many days before to be reminded (3 is the default).</li>
+<li>Press Remind me. Reminder cards appear here as the date gets close.</li>
+<li>Press Add to calendar to get the same alerts as phone alarms.</li>
+</ol>
+
+<h3 class="rm-h">FAQ</h3>
+<details><summary>Does it message me by itself?</summary><p>No. It has no server, so cards appear when you open this page. For alerts while the page is closed, use Add to calendar. It adds a separate calendar event at 9 am on each reminder day, plus one at 7 pm the evening before. The Google Calendar button adds a single reminder to Google Calendar. Charges are assumed to start at midnight of the trial end date.</p></details>
+<details><summary>Where is my data stored?</summary><p>Only in your browser on this device. Clearing site data deletes it.</p></details>
+<details><summary>What is Export / Import?</summary><p>Export downloads your list as a small file. Import loads it back, for example on a new phone or after clearing your browser.</p></details>
+<p class="rm-small"><a href="../../index.html">&larr; All tools</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../privacy.html">Privacy</a> &middot; <a href="../../contact.html">Contact</a> &middot; &copy; <span data-year></span> Micro Tools</p>
+</main>
+<script src="../../assets/common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CGPA to Percentage Calculator (10-Point Scale) | Free, Instant</title>
+<meta name="description" content="Convert CGPA to percentage and percentage back to CGPA. Choose the standard 9.5 formula, VTU, Mumbai University or your own. Free and private.">
+<link rel="canonical" href="https://gitttannesha.github.io/micro-tools/tools/cgpa-to-percentage/">
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+main.c{--fg:#14202b;--mut:#5b6b78;--bd:#dbe4e8;--card:#f3f7f8;--ac:#0f766e;max-width:640px;margin:0 auto;padding:2rem 1rem 3rem;color:var(--fg)}
+@media(prefers-color-scheme:dark){main.c{--fg:#e5edf1;--mut:#92a4af;--bd:#283740;--card:#162027;--ac:#34d3c1}}
+main.c h1{font-size:clamp(1.6rem,5vw,2.2rem);line-height:1.15;margin:0 0 .4rem}
+.c .lead{color:var(--mut);margin:0 0 1.5rem}
+.c-card{background:linear-gradient(135deg,#0f766e,#14b8a6);color:#fff;border-radius:18px;padding:1.4rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;box-shadow:0 8px 24px rgba(15,118,110,.25)}
+.c-card .full{grid-column:1/-1}
+main.c .c-card label{display:block;font-size:.88rem;font-weight:600;color:#fff!important}
+.c-card input,.c-card select{color-scheme:dark;width:100%;margin-top:.3rem;padding:.6rem .7rem;font:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.45);border-radius:10px}
+.c-card select option{color:#000}
+.c-card input:focus-visible,.c-card select:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.c-res{margin-top:1.2rem;border:1px solid var(--bd);background:var(--card);border-radius:18px;padding:1.2rem}
+.c-big{font-size:clamp(2.2rem,9vw,3.2rem);font-weight:800;color:var(--ac);line-height:1.1;font-variant-numeric:tabular-nums}
+.c-note{color:var(--mut);font-size:.85rem;margin-top:.6rem}
+.c-res table{width:100%;border-collapse:collapse;margin-top:.8rem;font-variant-numeric:tabular-nums}
+.c-res td{padding:.45rem 0;border-bottom:1px solid var(--bd)}.c-res td:last-child{text-align:right;font-weight:600}
+.c h3.h{font-size:1.05rem;margin:2rem 0 .6rem}
+.c details{border-bottom:1px solid var(--bd);padding:.6rem 0}.c summary{cursor:pointer;font-weight:600}
+@media(max-width:520px){.c-card{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="c">
+<h1>CGPA to Percentage Calculator</h1>
+<p class="lead">Convert a 10-point CGPA to percentage, or percentage back to CGPA, with the formula shown so you can check it.</p>
+
+<div class="c-card" role="group" aria-label="Conversion details">
+<label class="full">What do you want to convert?<select id="mode"><option value="fwd">CGPA to percentage</option><option value="rev">Percentage to CGPA</option></select></label>
+<label class="full"><span id="vlabel">Your CGPA (out of 10)</span><input id="val" type="number" min="0" max="100" step="0.01" inputmode="decimal" placeholder="e.g. 8.5"></label>
+<label class="full">Formula<select id="method">
+<option value="cbse">Standard (CBSE / UGC style): CGPA × 9.5</option>
+<option value="ten">Simple: CGPA × 10</option>
+<option value="vtu">VTU: (CGPA − 0.75) × 10</option>
+<option value="mum">Mumbai University: 7.1 × CGPA + 11</option>
+<option value="custom">My own formula</option></select></label>
+<label id="cmw" hidden>Multiplier<input id="cm" type="number" step="0.01" value="9.5"></label>
+<label id="cow" hidden>Add / subtract<input id="co" type="number" step="0.01" value="0"></label>
+</div>
+
+<section class="c-res" aria-live="polite">
+<div class="c-note" style="margin:0" id="rl">Result</div>
+<div class="c-big" id="big">–</div>
+<div class="c-note" id="how"></div>
+<table id="cmp"></table>
+</section>
+
+<p class="c-note">Universities use different rules, and some publish none. These are common formulas, not official statements. Use the one your university or employer specifies, and check your marksheet or the university website. If there is no official conversion, give your CGPA and the scale you were graded on.</p>
+
+<!-- AD SLOT: place ad code here later -->
+
+<h3 class="h">How to use</h3>
+<ol>
+<li>Choose whether you are converting CGPA to percentage or the other way round.</li>
+<li>Type the number and pick the formula your university uses.</li>
+<li>Read the result and the working underneath. The table compares the other common formulas.</li>
+</ol>
+
+<h3 class="h">FAQ</h3>
+<details><summary>Which formula should I use?</summary><p>The one your university or the organisation asking for it specifies. Many places accept CGPA × 9.5 when there is no official rule, but that is not universal.</p></details>
+<details><summary>Does it work for a 4-point scale?</summary><p>No. This tool is for 10-point CGPA systems.</p></details>
+<details><summary>Is my data saved?</summary><p>No. Everything is calculated in your browser and nothing is uploaded or stored.</p></details>
+<p class="c-note"><a href="../../index.html">&larr; All tools</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../privacy.html">Privacy</a> &middot; <a href="../../contact.html">Contact</a> &middot; &copy; <span data-year></span> Micro Tools</p>
+</main>
+<script src="../../assets/common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
