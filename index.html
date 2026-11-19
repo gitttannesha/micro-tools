@@ -20,6 +20,12 @@ main.h h1{font-size:clamp(1.9rem,6vw,2.6rem);line-height:1.12;margin:0 0 .5rem}
 .tool b{display:block;font-size:1.1rem;margin-bottom:.2rem}
 .tool span{color:var(--mut);font-size:.95rem}
 .h footer{margin-top:2.5rem;color:var(--mut);font-size:.85rem}
+html{scroll-behavior:smooth}
+.h section.page{border-top:1px solid var(--bd);padding-top:2rem;margin-top:3rem;scroll-margin-top:1.2rem}
+.h section.page h2{font-size:1.5rem;margin:0 0 .4rem}
+.h section.page h3{font-size:1.1rem;margin:2rem 0 .6rem}
+.h section.page p{margin:0 0 1rem}
+.h section.page .lead{margin:0 0 1.5rem}
 </style>
 </head>
 <body>
@@ -32,7 +38,39 @@ main.h h1{font-size:clamp(1.9rem,6vw,2.6rem);line-height:1.12;margin:0 0 .5rem}
 <a class="tool" href="tools/subscription-reminder/"><b>⏰ Free Trial Reminder</b><span>Track trials and get calendar reminders before they charge you.</span></a>
 </div>
 <!-- AD SLOT (home): place ad code here later -->
-<footer><a href="about.html">About</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="contact.html">Contact</a> &middot; &copy; <span data-year></span> Micro Tools</footer>
+
+<section class="page" id="about">
+<h2>About Micro Tools</h2>
+<p class="lead">Small, free tools that each do one job well.</p>
+<p>Micro Tools is a collection of single-purpose calculators and utilities, such as a CTC to in-hand salary calculator, a CGPA to percentage converter, and a free trial reminder. Every tool runs fully in your browser: nothing you type is uploaded to a server, and nothing is tracked beyond standard, privacy-respecting page analytics.</p>
+<p>The goal is simple: solve one specific, everyday problem per page, quickly and without sign-up, pop-ups, or clutter.</p>
+<p>Have a suggestion for a new tool, or found something that looks wrong? See <a href="#contact">Contact</a>.</p>
+</section>
+
+<section class="page" id="privacy">
+<h2>Privacy Policy</h2>
+<p class="lead">Last updated: November 2026</p>
+<h3>What we collect</h3>
+<p>Micro Tools does not run a server-side backend for its tools. Everything you type into a calculator (CTC, CGPA, trial dates, etc.) is processed entirely in your browser and is never sent to us or stored on our servers. The Free Trial Reminder tool saves the reminders you add in your browser's local storage, on your own device; this data never leaves your device and we never see it.</p>
+<h3>Cookies and advertising</h3>
+<p>This site may show ads served by Google AdSense. Google and its partners may use cookies or similar technologies to serve ads based on your prior visits to this or other websites. You can opt out of personalized advertising by visiting <a href="https://adssettings.google.com" rel="noopener" target="_blank">Google Ads Settings</a>. Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to this website or other websites.</p>
+<h3>Analytics</h3>
+<p>We may use privacy-respecting analytics (such as aggregate page-view counts) to understand which tools are useful. Any such analytics does not identify you personally and is not linked to the inputs you type into the tools.</p>
+<h3>Children's privacy</h3>
+<p>Micro Tools is not directed at children under 13 and we do not knowingly collect personal information from children.</p>
+<h3>Changes to this policy</h3>
+<p>We may update this policy from time to time. Changes will be posted on this page with an updated "last updated" date.</p>
+<h3>Contact</h3>
+<p>Questions about this policy? See <a href="#contact">Contact</a>.</p>
+</section>
+
+<section class="page" id="contact">
+<h2>Contact</h2>
+<p class="lead">Questions, feedback, or a tool you'd like to see?</p>
+<p>Email us at <a href="mailto:anneshawork017@gmail.com">anneshawork017@gmail.com</a></p>
+</section>
+
+<footer><a href="#about">About</a> &middot; <a href="#privacy">Privacy</a> &middot; <a href="#contact">Contact</a> &middot; &copy; <span data-year></span> Micro Tools</footer>
 </main>
 <script src="assets/common.js"></script>
 </body>
