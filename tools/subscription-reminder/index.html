@@ -92,12 +92,22 @@ html[data-theme="light"] .rm{--fg:#14202b;--mut:#5b6b78;--bd:#dbe4e8;--card:#f3f
 <p class="rm-small">Backup: <button type="button" id="export">Export</button> or <label style="cursor:pointer;text-decoration:underline;color:var(--ac)">Import<input id="import" type="file" accept="application/json" hidden></label></p>
 
 <h3 class="rm-h">How to use</h3>
-<ol>
-<li>Type the service name and the date its free trial ends.</li>
-<li>Choose how many days before to be reminded (3 is the default).</li>
-<li>Press Remind me. Reminder cards appear here as the date gets close.</li>
-<li>Press Add to calendar to get the same alerts as phone alarms.</li>
-</ol>
+<div class="feature">
+<div class="feature-art" aria-hidden="true">✍️</div>
+<div class="feature-text"><p style="margin:0">Type the service name and the date its free trial ends.</p></div>
+</div>
+<div class="feature rev">
+<div class="feature-art" aria-hidden="true">🗓️</div>
+<div class="feature-text"><p style="margin:0">Choose how many days before to be reminded (3 is the default).</p></div>
+</div>
+<div class="feature">
+<div class="feature-art" aria-hidden="true">🔔</div>
+<div class="feature-text"><p style="margin:0">Press Remind me. Reminder cards appear here as the date gets close.</p></div>
+</div>
+<div class="feature rev">
+<div class="feature-art" aria-hidden="true">📲</div>
+<div class="feature-text"><p style="margin:0">Press Add to calendar to get the same alerts as phone alarms.</p></div>
+</div>
 
 <h3 class="rm-h">FAQ</h3>
 <details><summary>Does it message me by itself?</summary><p>No. It has no server, so cards appear when you open this page. For alerts while the page is closed, use Add to calendar. It adds a separate calendar event at 9 am on each reminder day, plus one at 7 pm the evening before. The Google Calendar button adds a single reminder to Google Calendar. Charges are assumed to start at midnight of the trial end date.</p></details>

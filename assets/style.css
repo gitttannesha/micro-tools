@@ -14,6 +14,17 @@ body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 system-ui,-appl
 @keyframes float2{0%,100%{margin:0 0}50%{margin:7vh 0 0 -8vw}}
 @keyframes float3{0%,100%{margin:0 0}50%{margin:-8vh 0 0 6vw}}
 @media(prefers-reduced-motion:reduce){.bg-blobs span{animation:none;transition:none}}
+.feature{display:flex;align-items:center;gap:2.2rem;margin:2.4rem 0;flex-wrap:wrap}
+.feature.rev{flex-direction:row-reverse}
+.feature.top{align-items:flex-start}
+.feature-art{flex:0 0 130px;width:130px;height:130px;border-radius:26px;background:var(--card,#f3f7f8);border:1px solid var(--bd,#e4eaec);display:flex;align-items:center;justify-content:center;font-size:3.4rem;box-shadow:0 10px 26px rgba(15,118,110,.15);text-decoration:none}
+a.feature-art:hover{box-shadow:0 10px 30px rgba(15,118,110,.3);transform:translateY(-2px)}
+.feature-text{flex:1 1 260px;min-width:220px}
+.feature-text h2,.feature-text h3{margin:0 0 .4rem}
+.feature-text h3 a{text-decoration:none;color:inherit}
+.feature-text h3 a:hover{color:var(--ac)}
+.feature-text p{margin:0 0 .6rem;color:var(--mut)}
+@media(max-width:620px){.feature,.feature.rev{flex-direction:column;text-align:center}.feature-art{margin:0 auto}}
 nav.site{position:sticky;top:0;z-index:10;background:linear-gradient(135deg,#0f766e,#14b8a6);box-shadow:0 2px 14px rgba(15,118,110,.25)}
 nav.site .wrap{max-width:720px;margin:0 auto;padding:.7rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 nav.site .brand{font-weight:700;text-decoration:none;color:#fff;display:flex;align-items:center;gap:.4rem;flex-shrink:0}
