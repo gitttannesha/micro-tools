@@ -24,3 +24,22 @@ document.querySelectorAll('[data-year]').forEach(e=>{e.textContent=new Date().ge
     apply(mode);
   });
 })();
+
+// Interactive background: blobs drift slowly on their own (CSS animation), and also
+// nudge slightly toward the pointer for a subtle parallax feel. Skipped entirely for
+// users who prefer reduced motion, and on touch-only devices (no fine pointer).
+(() => {
+  const spans = document.querySelectorAll('.bg-blobs span');
+  if (!spans.length) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!window.matchMedia('(any-hover: hover) and (any-pointer: fine)').matches) return;
+  const depth = [18, -14, 11];
+  window.addEventListener('pointermove', e => {
+    const dx = (e.clientX / window.innerWidth - 0.5) * 2;
+    const dy = (e.clientY / window.innerHeight - 0.5) * 2;
+    spans.forEach((s, i) => {
+      s.style.setProperty('--mx', `${dx * depth[i % depth.length]}px`);
+      s.style.setProperty('--my', `${dy * depth[i % depth.length]}px`);
+    });
+  }, { passive: true });
+})();
