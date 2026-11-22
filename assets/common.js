@@ -26,20 +26,35 @@ document.querySelectorAll('[data-year]').forEach(e=>{e.textContent=new Date().ge
 })();
 
 // Interactive background: blobs drift slowly on their own (CSS animation), and also
-// nudge slightly toward the pointer for a subtle parallax feel. Skipped entirely for
-// users who prefer reduced motion, and on touch-only devices (no fine pointer).
+// react strongly to the mouse (parallax, mouse-with-pointer devices) and to page scroll
+// (works on touch devices too, via the --sy variable each blob's transform already uses).
+// Fully skipped for users who prefer reduced motion.
 (() => {
   const spans = document.querySelectorAll('.bg-blobs span');
   if (!spans.length) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (!window.matchMedia('(any-hover: hover) and (any-pointer: fine)').matches) return;
-  const depth = [18, -14, 11];
-  window.addEventListener('pointermove', e => {
-    const dx = (e.clientX / window.innerWidth - 0.5) * 2;
-    const dy = (e.clientY / window.innerHeight - 0.5) * 2;
-    spans.forEach((s, i) => {
-      s.style.setProperty('--mx', `${dx * depth[i % depth.length]}px`);
-      s.style.setProperty('--my', `${dy * depth[i % depth.length]}px`);
+
+  if (window.matchMedia('(any-hover: hover) and (any-pointer: fine)').matches) {
+    const depth = [70, -55, 42];
+    window.addEventListener('pointermove', e => {
+      const dx = (e.clientX / window.innerWidth - 0.5) * 2;
+      const dy = (e.clientY / window.innerHeight - 0.5) * 2;
+      spans.forEach((s, i) => {
+        s.style.setProperty('--mx', `${dx * depth[i % depth.length]}px`);
+        s.style.setProperty('--my', `${dy * depth[i % depth.length]}px`);
+      });
+    }, { passive: true });
+  }
+
+  let ticking = false;
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const sy = Math.min(window.scrollY, 1200);
+      spans.forEach(s => s.style.setProperty('--sy', `${sy * 0.08}px`));
+      ticking = false;
     });
-  }, { passive: true });
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
 })();
