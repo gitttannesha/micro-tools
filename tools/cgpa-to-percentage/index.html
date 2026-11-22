@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>(()=>{try{const m=localStorage.getItem('theme');if(m&&m!=='auto')document.documentElement.setAttribute('data-theme',m);}catch(e){}})();</script>
 <title>CGPA to Percentage Calculator (10-Point Scale) | Free, Instant</title>
 <meta name="description" content="Convert CGPA to percentage and percentage back to CGPA. Choose the standard 9.5 formula, VTU, Mumbai University or your own. Free and private.">
 <link rel="canonical" href="https://easyhisaab.com/tools/cgpa-to-percentage/">
@@ -20,6 +21,8 @@
 <style>
 main.c{--fg:#14202b;--mut:#5b6b78;--bd:#dbe4e8;--card:#f3f7f8;--ac:#0f766e;max-width:640px;margin:0 auto;padding:2rem 1rem 3rem;color:var(--fg)}
 @media(prefers-color-scheme:dark){main.c{--fg:#e5edf1;--mut:#92a4af;--bd:#283740;--card:#162027;--ac:#34d3c1}}
+html[data-theme="dark"] main.c{--fg:#e5edf1;--mut:#92a4af;--bd:#283740;--card:#162027;--ac:#34d3c1}
+html[data-theme="light"] main.c{--fg:#14202b;--mut:#5b6b78;--bd:#dbe4e8;--card:#f3f7f8;--ac:#0f766e}
 main.c h1{font-size:clamp(1.6rem,5vw,2.2rem);line-height:1.15;margin:0 0 .4rem}
 .c .lead{color:var(--mut);margin:0 0 1.5rem}
 .c-card{background:linear-gradient(135deg,#0f766e,#14b8a6);color:#fff;border-radius:18px;padding:1.4rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;box-shadow:0 8px 24px rgba(15,118,110,.25)}
@@ -39,6 +42,17 @@ main.c .c-card label{display:block;font-size:.88rem;font-weight:600;color:#fff!i
 </style>
 </head>
 <body>
+<div class="bg-blobs" aria-hidden="true"><span></span><span></span><span></span></div>
+<nav class="site"><div class="wrap">
+<a class="brand" href="../../index.html">🧰 Micro Tools</a>
+<div class="links">
+<a href="../ctc-to-inhand/">CTC</a>
+<a href="../cgpa-to-percentage/">CGPA</a>
+<a href="../subscription-reminder/">Reminder</a>
+<a href="../../index.html#about">About</a>
+</div>
+<button type="button" id="themeToggle" aria-label="Toggle theme">🌓 Auto</button>
+</div></nav>
 <main class="c">
 <h1>CGPA to Percentage Calculator</h1>
 <p class="lead">Convert a 10-point CGPA to percentage, or percentage back to CGPA, with the formula shown so you can check it.</p>

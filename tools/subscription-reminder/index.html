@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>(()=>{try{const m=localStorage.getItem('theme');if(m&&m!=='auto')document.documentElement.setAttribute('data-theme',m);}catch(e){}})();</script>
 <title>Free Trial Reminder | Never Pay for a Forgotten Trial</title>
 <meta name="description" content="Add a free trial, pick how many days before it ends to be reminded, and get funky reminders plus calendar alarms. Free, private, no sign-up.">
 <link rel="canonical" href="https://easyhisaab.com/tools/subscription-reminder/">
@@ -20,6 +21,8 @@
 <style>
 .rm{--fg:#14202b;--mut:#5b6b78;--bd:#dbe4e8;--card:#f3f7f8;--red:#c81e1e;--amb:#a15c07;--ac:#0f766e;max-width:640px;margin:0 auto;padding:2rem 1rem 3rem;color:var(--fg)}
 @media(prefers-color-scheme:dark){.rm{--fg:#e5edf1;--mut:#92a4af;--bd:#283740;--card:#162027;--red:#ff8080;--amb:#f5b94a;--ac:#34d3c1}}
+html[data-theme="dark"] .rm{--fg:#e5edf1;--mut:#92a4af;--bd:#283740;--card:#162027;--red:#ff8080;--amb:#f5b94a;--ac:#34d3c1}
+html[data-theme="light"] .rm{--fg:#14202b;--mut:#5b6b78;--bd:#dbe4e8;--card:#f3f7f8;--red:#c81e1e;--amb:#a15c07;--ac:#0f766e}
 .rm h1{font-size:clamp(1.6rem,5vw,2.2rem);line-height:1.15;margin:0 0 .4rem}
 .rm .lead{color:var(--mut);margin:0 0 1.5rem}
 .rm-card{background:linear-gradient(135deg,#0f766e,#14b8a6);color:#fff;border-radius:18px;padding:1.4rem;display:grid;gap:1rem;box-shadow:0 8px 24px rgba(15,118,110,.25)}
@@ -53,6 +56,17 @@
 </style>
 </head>
 <body>
+<div class="bg-blobs" aria-hidden="true"><span></span><span></span><span></span></div>
+<nav class="site"><div class="wrap">
+<a class="brand" href="../../index.html">🧰 Micro Tools</a>
+<div class="links">
+<a href="../ctc-to-inhand/">CTC</a>
+<a href="../cgpa-to-percentage/">CGPA</a>
+<a href="../subscription-reminder/">Reminder</a>
+<a href="../../index.html#about">About</a>
+</div>
+<button type="button" id="themeToggle" aria-label="Toggle theme">🌓 Auto</button>
+</div></nav>
 <main class="rm">
 <h1>Free Trial Reminder</h1>
 <p class="lead">Add a trial, and get nudged before it charges you. Saved only in this browser.</p>
