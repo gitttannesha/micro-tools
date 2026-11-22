@@ -1,4 +1,1 @@
-# Replace pub-0000000000000000 below with your real AdSense publisher ID
-# once your AdSense account is approved. Find it in AdSense under
-# Account > Account information ("Publisher ID"), format: pub-XXXXXXXXXXXXXXXX
-google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+google.com, pub-5302080091133131, DIRECT, f08c47fec0942fa0
