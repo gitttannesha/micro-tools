@@ -1,5 +1,19 @@
 document.querySelectorAll('[data-year]').forEach(e=>{e.textContent=new Date().getFullYear()});
 
+// Cookie consent banner: shown once until the visitor accepts or declines.
+// The choice is only used to hide the banner; this site does not change what
+// it loads based on the choice (AdSense cookies are disclosed in the privacy policy).
+(() => {
+  const KEY = 'cookie-consent';
+  const banner = document.getElementById('cookieBanner');
+  if (!banner) return;
+  if (localStorage.getItem(KEY)) return;
+  banner.hidden = false;
+  const setChoice = v => { try { localStorage.setItem(KEY, v); } catch {} banner.hidden = true; };
+  document.getElementById('cookieAccept')?.addEventListener('click', () => setChoice('accepted'));
+  document.getElementById('cookieDecline')?.addEventListener('click', () => setChoice('declined'));
+})();
+
 // Theme toggle: cycles Auto (follow system) -> Light -> Dark -> Auto.
 // The initial theme is applied synchronously by an inline script in <head> (before paint)
 // to avoid a flash of the wrong theme; this file only wires up the button + persists choice.
